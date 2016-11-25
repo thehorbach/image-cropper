@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xGm-lY-cRX">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ImageCropping" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +18,97 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4qY-YM-WJQ">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="ETT-a4-ruK"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Pick Image" id="uhv-c4-Pr4">
+                                        <connections>
+                                            <action selector="addImageButtonDidTouch:" destination="BYZ-38-t0r" id="9YF-xj-mmM"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Uug-d1-7vC"/>
+                                    <barButtonItem title="Crop Ratio" id="EWY-5J-Tfr"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="aHA-oe-x0v"/>
+                                    <barButtonItem title="Crop" id="izq-Oy-NNp"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="4qY-YM-WJQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SXv-3b-oVP"/>
+                            <constraint firstAttribute="trailing" secondItem="4qY-YM-WJQ" secondAttribute="trailing" id="gTe-nh-rKb"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4qY-YM-WJQ" secondAttribute="bottom" id="yAH-Rl-iAh"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Pkq-XD-uSS"/>
+                    <connections>
+                        <segue destination="6RP-97-Vgf" kind="show" id="do8-ZH-acq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1056.8" y="122.78860569715144"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="siE-hB-Vnq">
+            <objects>
+                <viewController id="6RP-97-Vgf" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iH7-gN-PDI"/>
+                        <viewControllerLayoutGuide type="bottom" id="VRP-3Z-RyO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="91N-KA-qZF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6v2-BN-l27">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="WYL-UC-8zr"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Crop Again" id="yZQ-Uq-JK1"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="v0T-au-MdT"/>
+                                    <barButtonItem title="Save" id="Kdv-5A-TVZ"/>
+                                </items>
+                            </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f8E-nR-B8k"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6v2-BN-l27" firstAttribute="top" secondItem="f8E-nR-B8k" secondAttribute="bottom" constant="20" id="0QI-Bc-EKy"/>
+                            <constraint firstItem="f8E-nR-B8k" firstAttribute="trailing" secondItem="91N-KA-qZF" secondAttribute="trailingMargin" id="2ld-YT-G7w"/>
+                            <constraint firstAttribute="trailing" secondItem="6v2-BN-l27" secondAttribute="trailing" id="6Te-nx-X1P"/>
+                            <constraint firstItem="6v2-BN-l27" firstAttribute="leading" secondItem="91N-KA-qZF" secondAttribute="leading" id="8TW-XH-paY"/>
+                            <constraint firstItem="VRP-3Z-RyO" firstAttribute="top" secondItem="6v2-BN-l27" secondAttribute="bottom" id="KBS-Ek-FZx"/>
+                            <constraint firstItem="f8E-nR-B8k" firstAttribute="leading" secondItem="91N-KA-qZF" secondAttribute="leadingMargin" id="XLT-oO-VBF"/>
+                            <constraint firstItem="f8E-nR-B8k" firstAttribute="top" secondItem="iH7-gN-PDI" secondAttribute="bottom" constant="20" id="bTh-Gb-z9L"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V4s-aA-rnT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1864.8" y="122.78860569715144"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9mI-LJ-Ang">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xGm-lY-cRX" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Hi-ME-nez">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="o6n-YB-chx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f0d-2n-FRz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="167" y="123"/>
         </scene>
     </scenes>
 </document>
