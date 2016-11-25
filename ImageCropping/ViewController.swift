@@ -32,7 +32,6 @@ class ViewController: UIViewController {
     }
     
     func makeCropAreaVisible(){ //making selected crop area
-        //cropView.removeFromSuperview()
         cropView = nil
         cropView = CustomView(origin: self.view.center, width: 100.0, height: 100.0)
         self.view.addSubview(cropView)

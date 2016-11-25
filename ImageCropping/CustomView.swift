@@ -20,7 +20,6 @@ class CustomView: UIView {
         self.accessibilityPath = UIBezierPath(roundedRect: insetRect, cornerRadius: 0.0)
         self.center = origin
         
-       // self.fillColor = UIColor(red: 0.09, green: 0.56, blue: 0.8, alpha: 0.2)
         self.backgroundColor = UIColor(red: 0.09, green: 0.56, blue: 0.8, alpha: 0.2)
         
         _cropoptions.Width = self.bounds.width
@@ -39,16 +38,6 @@ class CustomView: UIView {
     }
     
     func panning(panGR: UIPanGestureRecognizer) {
-        //self.superview!.bringSubview(toFront: self)
-        
-        //var translation = panGR.translation(in: self)
-        
-        //translation = translation.applying(self.transform)
-        
-        //self.center.x += translation.x
-        //self.center.y += translation.y
-        //panGR.setTranslation(CGPoint.zero, in: self)
-        
         let translation = panGR.translation(in: self)
         self.center.x += translation.x
         self.center.y += translation.y
@@ -58,8 +47,6 @@ class CustomView: UIView {
     }
     
     func pinching(pinchGR: UIPinchGestureRecognizer) {
-        //self.superview!.bringSubview(toFront: self)
-     
         let scale = pinchGR.scale
         self.transform = self.transform.scaledBy(x: scale, y: scale)
         pinchGR.scale = 1.0
