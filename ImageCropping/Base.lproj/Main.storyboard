@@ -32,7 +32,11 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Uug-d1-7vC"/>
                                     <barButtonItem title="Crop Ratio" id="EWY-5J-Tfr"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="aHA-oe-x0v"/>
-                                    <barButtonItem title="Crop" id="izq-Oy-NNp"/>
+                                    <barButtonItem title="Crop" id="izq-Oy-NNp">
+                                        <connections>
+                                            <action selector="cropButtonDidTouch:" destination="BYZ-38-t0r" id="gCW-Lt-apO"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -45,17 +49,17 @@
                     </view>
                     <navigationItem key="navigationItem" id="Pkq-XD-uSS"/>
                     <connections>
-                        <segue destination="6RP-97-Vgf" kind="show" id="do8-ZH-acq"/>
+                        <segue destination="6RP-97-Vgf" kind="show" identifier="showCroppedImg" id="do8-ZH-acq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1056.8" y="122.78860569715144"/>
         </scene>
-        <!--View Controller-->
+        <!--ImageVC-->
         <scene sceneID="siE-hB-Vnq">
             <objects>
-                <viewController id="6RP-97-Vgf" sceneMemberID="viewController">
+                <viewController id="6RP-97-Vgf" customClass="ImageVC" customModule="ImageCropping" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iH7-gN-PDI"/>
                         <viewControllerLayoutGuide type="bottom" id="VRP-3Z-RyO"/>
@@ -74,7 +78,7 @@
                                     <barButtonItem title="Save" id="Kdv-5A-TVZ"/>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f8E-nR-B8k"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f8E-nR-B8k"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -87,6 +91,9 @@
                             <constraint firstItem="f8E-nR-B8k" firstAttribute="top" secondItem="iH7-gN-PDI" secondAttribute="bottom" constant="20" id="bTh-Gb-z9L"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="f8E-nR-B8k" id="XRV-eG-XUz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V4s-aA-rnT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -13,6 +13,8 @@
 		11409CA61DE895D300424C04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11409CA51DE895D300424C04 /* Assets.xcassets */; };
 		11409CA91DE895D300424C04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11409CA71DE895D300424C04 /* LaunchScreen.storyboard */; };
 		11FAEB2A1DE89C4000E4D417 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FAEB291DE89C4000E4D417 /* CustomView.swift */; };
+		11FAEB2C1DE8E39900E4D417 /* ImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FAEB2B1DE8E39900E4D417 /* ImageVC.swift */; };
+		11FAEB2E1DE8EAEF00E4D417 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FAEB2D1DE8EAEF00E4D417 /* Global.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		11409CA81DE895D300424C04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11409CAA1DE895D300424C04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11FAEB291DE89C4000E4D417 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		11FAEB2B1DE8E39900E4D417 /* ImageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageVC.swift; sourceTree = "<group>"; };
+		11FAEB2D1DE8EAEF00E4D417 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				11409CA71DE895D300424C04 /* LaunchScreen.storyboard */,
 				11409CAA1DE895D300424C04 /* Info.plist */,
 				11FAEB291DE89C4000E4D417 /* CustomView.swift */,
+				11FAEB2B1DE8E39900E4D417 /* ImageVC.swift */,
+				11FAEB2D1DE8EAEF00E4D417 /* Global.swift */,
 			);
 			path = ImageCropping;
 			sourceTree = "<group>";
@@ -140,8 +146,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11FAEB2C1DE8E39900E4D417 /* ImageVC.swift in Sources */,
 				11FAEB2A1DE89C4000E4D417 /* CustomView.swift in Sources */,
 				11409CA11DE895D300424C04 /* ViewController.swift in Sources */,
+				11FAEB2E1DE8EAEF00E4D417 /* Global.swift in Sources */,
 				11409C9F1DE895D300424C04 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

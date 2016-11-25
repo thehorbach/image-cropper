@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     var chosenImage: UIImage!
     var added = false
     var imageViewRect: CGRect!
+    var croppedImage: UIImage!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +34,6 @@ class ViewController: UIViewController {
     func makeCropAreaVisible(){ //making selected crop area
         //cropView.removeFromSuperview()
         cropView = nil
-        
-        let min: CGFloat = imageViewRect.size.height > imageViewRect.size.width ? imageViewRect.size.width:imageViewRect.size.height
-        
         cropView = CustomView(origin: self.view.center, width: 100.0, height: 100.0)
         self.view.addSubview(cropView)
     }
@@ -43,6 +41,37 @@ class ViewController: UIViewController {
     func calculateRect(){ // getting same value from the image
         imageViewRect = AVMakeRect(aspectRatio: chosenImage.size, insideRect: imageView.bounds)
         print (" Image Frame height:\(imageViewRect.size.height) width:\(imageViewRect.size.width) and x,y =( \(imageViewRect.origin.x) ,\(imageViewRect.origin.y) )" )
+    }
+    
+    func retriveCroppedImage(){
+        let yratio: CGFloat = imageViewRect.size.height / chosenImage.size.height
+        let xratio: CGFloat = imageViewRect.size.width / chosenImage.size.width
+        
+        var cliprect = CGRect(x: _cropoptions.Center.x - _cropoptions.Width/2, y: _cropoptions.Center.y - _cropoptions.Height/2, width: _cropoptions.Width, height: _cropoptions.Height)
+        
+        print("cliprect top  \(cliprect.size)")
+        cliprect.size.height =  cliprect.size.height / xratio;
+        cliprect.size.width =  cliprect.size.width / xratio;
+        cliprect.origin.x = cliprect.origin.x / xratio + imageViewRect.origin.x  / xratio
+        cliprect.origin.y = cliprect.origin.y / yratio - imageViewRect.origin.y  / xratio
+        print("cliprect  On Image \(cliprect)")
+        
+        let imageRef =  chosenImage.cgImage!.cropping(to: cliprect )
+        croppedImage  = UIImage(cgImage: imageRef!, scale:  UIScreen.main.scale, orientation: chosenImage.imageOrientation)
+        print("Operation complete");
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showCroppedImg" {
+            
+            let destionationVC = segue.destination as! ImageVC
+            destionationVC.image = croppedImage
+        }
+    }
+    
+    @IBAction func cropButtonDidTouch(_ sender: AnyObject) {
+        retriveCroppedImage()
+        self.performSegue(withIdentifier: "showCroppedImg", sender: self)
     }
 }
 
