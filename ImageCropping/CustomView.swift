@@ -10,33 +10,54 @@ import UIKit
 
 class CustomView: UIView {
     
-    let lineWidth: CGFloat = 5.0
+    let lineWidth: CGFloat = 2.5
+    
+    override func draw(_ rect: CGRect) {
+        self.backgroundColor?.setFill()
+        self.accessibilityPath?.fill()
+        self.accessibilityPath?.lineWidth = self.lineWidth
+        UIColor.blue.setStroke()
+        self.accessibilityPath?.stroke()
+    }
     
     init(origin: CGPoint, width: CGFloat,   height: CGFloat) {
         super.init(frame: CGRect(x: 0.0, y: 0.0, width: width, height: height))
+        
+        let insetRect = self.bounds.insetBy(dx: lineWidth, dy: lineWidth)
+        self.accessibilityPath = UIBezierPath(roundedRect: insetRect, cornerRadius: 5.0)
+        self.backgroundColor = UIColor.clear
+        self.center = origin
+    
         _cropoptions = CROP_OPTIONS()
         _cropoptions.Center = origin
-        let insetRect = self.bounds.insetBy(dx: lineWidth, dy: lineWidth)
-        self.accessibilityPath = UIBezierPath(roundedRect: insetRect, cornerRadius: 0.0)
-        self.center = origin
-        
-        self.backgroundColor = UIColor(red: 0.09, green: 0.56, blue: 0.8, alpha: 0.2)
-        
         _cropoptions.Width = self.bounds.width
         _cropoptions.Height = self.bounds.height
-        self.backgroundColor = UIColor.clear
-        
+
         let panning = UIPanGestureRecognizer(target: self, action: #selector(CustomView.panning(panGR:)))
         addGestureRecognizer(panning)
+
+        //let pinching = UIPinchGestureRecognizer(target: self, action: #selector(CustomView.pinching(pinchGR:)))
+        //addGestureRecognizer(pinching)
+    }
+    
+    func panning(panGR: UIPanGestureRecognizer) {
+        let translation = panGR.translation(in: self)
         
-        let pinching = UIPinchGestureRecognizer(target: self, action: #selector(CustomView.pinching(pinchGR:)))
-        addGestureRecognizer(pinching)
+        self.transform.a += translation.x / 500
+        self.transform.d += translation.y / 500
+        
+        panGR.setTranslation(CGPoint.zero, in: self)
+        
+        _cropoptions.Center = self.center
+        _cropoptions.Height = self.frame.height
+        _cropoptions.Width = self.frame.width
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /*
     func panning(panGR: UIPanGestureRecognizer) {
         let translation = panGR.translation(in: self)
         self.center.x += translation.x
@@ -54,12 +75,5 @@ class CustomView: UIView {
         _cropoptions.Height = self.frame.height
         _cropoptions.Width = self.frame.width
     }
-    
-    override func draw(_ rect: CGRect) {
-        self.backgroundColor?.setFill()
-        self.accessibilityPath?.fill()
-        self.accessibilityPath?.lineWidth = self.lineWidth
-        UIColor.white.setStroke()
-        self.accessibilityPath?.stroke()
-    }
+ */
 }

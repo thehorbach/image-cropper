@@ -61,14 +61,14 @@
 			isa = PBXGroup;
 			children = (
 				11409C9E1DE895D300424C04 /* AppDelegate.swift */,
-				11409CA01DE895D300424C04 /* ViewController.swift */,
 				11409CA21DE895D300424C04 /* Main.storyboard */,
 				11409CA51DE895D300424C04 /* Assets.xcassets */,
 				11409CA71DE895D300424C04 /* LaunchScreen.storyboard */,
 				11409CAA1DE895D300424C04 /* Info.plist */,
+				11409CA01DE895D300424C04 /* ViewController.swift */,
 				11FAEB291DE89C4000E4D417 /* CustomView.swift */,
-				11FAEB2B1DE8E39900E4D417 /* ImageVC.swift */,
 				11FAEB2D1DE8EAEF00E4D417 /* Global.swift */,
+				11FAEB2B1DE8E39900E4D417 /* ImageVC.swift */,
 			);
 			path = ImageCropping;
 			sourceTree = "<group>";

@@ -15,10 +15,4 @@ struct CROP_OPTIONS {
     var Center: CGPoint!
 }
 
-struct FRAME {
-    var Height: CGFloat!
-    var Width: CGFloat!
-}
-
 var  _cropoptions: CROP_OPTIONS!
-var _frame: CROP_OPTIONS!
